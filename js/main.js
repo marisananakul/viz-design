@@ -80,7 +80,6 @@ for (var i = 0; i < data.length; i++) {
 
 }
 
-//console.log(pCount + " " + nCount);
 var data2 = [{
 	labels: ["negative", "positive"],
  	type: "pie",
@@ -93,34 +92,49 @@ var layout2 = {
 
 Plotly.plot('chart2', data2, layout2, {staticPlot: true});
 
+var trace4 = {
+	x: unpack(data, 'Bacteria '),
+	y: unpack(data, 'Streptomycin '),
+	marker: {
+		color: "rgba(64, 196, 127, 1)",
+		size: 7
+	},
+	mode: "markers",
+	type: "scatter",
+	name: "Streptomycin"
+};
+
+var trace5 = {
+	x: unpack(data, 'Bacteria '),
+	y: unpack(data, 'Neomycin'),
+	marker: {
+		color: "rgba(251, 109, 214, 1)", 
+		size: 7
+	},
+	mode: "markers",
+	type: "scatter",
+	name: "Neomycin"
+};
+
+var build2 = [trace4, trace5];
+console.log(build2);
+var layout3 = {
+	title: "Scatter plot",
+	xaxis: {
+		title: "Bacteria"
+	},
+	yaxis: {
+		title: "MIC"
+	}
+
+};
+Plotly.plot('chart3', build2, layout3, {staticPlot: true});
+
+
+
+
 });
 });
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
