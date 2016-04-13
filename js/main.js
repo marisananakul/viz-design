@@ -16,9 +16,6 @@ var trace1 = {
 	orientation: "v",
 	showlegend: true,
 	type: "bar",
-	//visible: true,
-	//xaxis: "x1",
-	//yaxis: "y1"
 
 };
 
@@ -29,9 +26,6 @@ var trace2 = {
 	orientation: "v",
 	showlegend: true,
 	type: "bar",
-	//visible: true,
-	//xaxis: "x1",
-	//yaxis: "y1"
 
 };
 
@@ -42,14 +36,13 @@ var trace3 = {
 	orientation: "v",
 	showlegend: true,
 	type: "bar",
-	//visible: true,
-	//xaxis: "x1",
-	//yaxis: "y1"
+
 };
 
 var build = [trace1, trace2, trace3];
 
 var layout = {
+	title: "Bacteria MIC Levels",
 	barmode: "stack",
 	xaxis1: {
 		showgrid: true,
@@ -58,9 +51,10 @@ var layout = {
 	yaxis1: {
 		showgrid: true,
 		title: "MIC",
-		
+	},
+	margin: {
+		b: 150,
 	}
-
 };
 
 Plotly.plot('chart1', build, layout, {staticPlot: true});
@@ -87,7 +81,8 @@ var data2 = [{
 }];
 
 var layout2 = {
-	title: "Pie Chart"
+	title: "Bacteria Gram Stains",
+	autosize: true
 };
 
 Plotly.plot('chart2', data2, layout2, {staticPlot: true});
@@ -125,12 +120,14 @@ var layout3 = {
 	},
 	yaxis: {
 		title: "MIC"
+	},
+	margin: {
+		r: 50,
+		b: 120,
 	}
 
 };
 Plotly.plot('chart3', build2, layout3, {staticPlot: true});
-
-
 
 
 });
