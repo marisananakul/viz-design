@@ -2,13 +2,14 @@ $(function() {
 	d3.csv("data/antibiotics_data.csv", function(data) {
    console.log(data);
 
+// extracts data
 function unpack(rows, element) {
 	return rows.map(function(row) {
 		return row[element];
 	});
 
 }
-
+// bar chart
 var trace1 = {
 	x: unpack(data, 'Bacteria '),
 	y: unpack(data, 'Penicilin'),
@@ -42,7 +43,7 @@ var trace3 = {
 var build = [trace1, trace2, trace3];
 
 var layout = {
-	title: "Bacteria MIC Levels",
+	title: "Penicilin, Streptomycin, and Neomycin MIC Levels on Different Bacteria",
 	barmode: "stack",
 	xaxis1: {
 		showgrid: true,
@@ -59,7 +60,7 @@ var layout = {
 
 Plotly.plot('chart1', build, layout, {staticPlot: true});
 
-
+// calculates number of negative and positive gram stains in data
 var pCount = 0;
 var nCount = 0;
 for (var i = 0; i < data.length; i++) {
@@ -74,6 +75,7 @@ for (var i = 0; i < data.length; i++) {
 
 }
 
+// pie chart
 var data2 = [{
 	labels: ["negative", "positive"],
  	type: "pie",
@@ -87,6 +89,7 @@ var layout2 = {
 
 Plotly.plot('chart2', data2, layout2, {staticPlot: true});
 
+// scatter plot
 var trace4 = {
 	x: unpack(data, 'Bacteria '),
 	y: unpack(data, 'Streptomycin '),
@@ -114,7 +117,7 @@ var trace5 = {
 var build2 = [trace4, trace5];
 console.log(build2);
 var layout3 = {
-	title: "Scatter plot",
+	title: "Distribution of Streptomycin and Neomycin MIC Levels on Different Bacteria",
 	xaxis: {
 		title: "Bacteria"
 	},
