@@ -66,25 +66,32 @@ var layout = {
 Plotly.plot('chart1', build, layout, {staticPlot: true});
 
 
-
-
-var data2 = [
-	{
-		labels: ["negative", "positive"],
-		type: "pie",
-		values: ["1", "1", "2", "2", "1", "1", "1", "1", "1", "1", "1", "2", "2", "2", "2", "2"]
-
-
-
-
+var pCount = 0;
+var nCount = 0;
+for (var i = 0; i < data.length; i++) {
+	var GramStainingStatus = data[i]['Gram Staining '];
+	if(GramStainingStatus == "positive") {
+		pCount++;
+	} else if(GramStainingStatus == "negative") {
+		nCount++;
+	} else {
+		console.log("Error with data");
 	}
 
+}
 
-];
+//console.log(pCount + " " + nCount);
+var data2 = [{
+	labels: ["negative", "positive"],
+ 	type: "pie",
+	values: [nCount, pCount]
+}];
+
 var layout2 = {
 	title: "Pie Chart"
 };
-Plotly.plot('chart2', data2, layout2);
+
+Plotly.plot('chart2', data2, layout2, {staticPlot: true});
 
 });
 });
